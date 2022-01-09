@@ -1,0 +1,129 @@
+:root {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+$backgroundTask: #fff4f4;
+$paddingInputs: 25px 15px;
+
+$principalFont: "Noto Sans", sans-serif;
+$secundaryFont: "Open Sans", sans-serif;
+
+$principalColor: #1a535c;
+$secundaryColor: #ff6b6b;
+
+$taskFontSize: 15px;
+
+body {
+  background: #e7e7e7;
+}
+.nameApp {
+  font-size: 45px;
+  text-align: center;
+  font-family: $principalFont;
+  color: $principalColor;
+  margin: 5% 0 3%;
+}
+
+.taskContent {
+  background: $backgroundTask;
+  color: #888888;
+  z-index: 100;
+  width: 45%;
+  margin: 0 auto;
+  padding: 0;
+
+  .addTaskInput_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .iconAddTask {
+      margin: 20px 15px;
+    }
+
+    .addTaskInput {
+      width: 100%;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #e4e4e4;
+      padding: $paddingInputs;
+      color: $secundaryColor;
+      font-family: $principalFont;
+      font-size: $taskFontSize;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  .taskList_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .taskDoneIcon {
+      margin: 20px 15px;
+      color: green;
+      font-size: 20px;
+    }
+
+    .deleteTaskIcon {
+      margin: 20px 15px;
+      color: #aaaaaa;
+      font-size: 19px;
+    }
+    .deleteTaskIcon:hover {
+      color: red;
+      transition: all 0.2s ease-in;
+    }
+
+    .task {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding: $paddingInputs;
+      color: $principalColor;
+      font-size: calc($taskFontSize + 5px);
+      font-family: $secundaryFont;
+    }
+  }
+}
+
+.fitlerTask_Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #c4c4c4;
+  box-shadow: 0px 5px 0 -2px #e0e0e0, 0px 10px 0 -4px #dadada,
+    0px 15px 0 -6px #c9c9c9;
+
+  .itemsLeft {
+    margin: 0 20px;
+    color: rgb(87, 87, 87);
+    font-family: $secundaryFont;
+    font-weight: normal;
+    font-size: 14px;
+  }
+
+  .fitlerOptions {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+
+    p {
+      margin: auto 10px;
+      border: 1px solid #dbdbdb;
+      padding: 3px 8px;
+      font-family: $principalFont;
+      font-size: 15px;
+    }
+    p:hover {
+      border: 1px solid #bbbbbb;
+      transition: all 0.2s ease-in;
+    }
+  }
+}
