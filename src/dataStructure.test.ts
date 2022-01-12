@@ -38,8 +38,9 @@ describe("Working with functions to handle local storage", () => {
   test("Should returns a task from local storage", () => {
     const taskId = generateId();
     addTask({ id: taskId, todo: "Something todo", completed: false });
-
-    expect(getTask(taskId)).not.toBeUndefined();
+    const addedTask = getTask(taskId);
+    console.log(addedTask);
+    expect(addedTask).not.toBeUndefined();
   });
 
   test("Should remove an item in local storage", () => {
@@ -70,8 +71,10 @@ describe("Working with functions to handle local storage", () => {
     addTask({ id: generateId(), todo: "Something todo", completed: false });
     addTask({ id: generateId(), todo: "Something todo", completed: false });
     addTask({ id: generateId(), todo: "Something todo", completed: false });
+    const allTask = getAllTask();
 
-    expect(getAllTask()).not.toBe([]);
+    console.log(allTask);
+    expect(allTask).not.toBe([]);
   });
 
   test("Should clear local storage", () => {
