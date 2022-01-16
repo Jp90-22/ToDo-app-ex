@@ -6,7 +6,7 @@ import {
   editTask,
   getAllTask,
   getTask,
-  removeItem,
+  removeTask,
 } from "./dataStructure";
 
 describe("Working with functions to handle local storage", () => {
@@ -46,7 +46,7 @@ describe("Working with functions to handle local storage", () => {
   test("Should remove an item in local storage", () => {
     const taskId = generateId();
     addTask({ id: taskId, todo: "Something todo", completed: false });
-    removeItem(taskId);
+    removeTask(taskId);
     expect(localStorage[taskId]).toBeUndefined();
   });
 
