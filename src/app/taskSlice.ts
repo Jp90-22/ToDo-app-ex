@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import Task, {
   getAllTask,
   addTask,
@@ -55,6 +55,11 @@ export const clearTaskListThunk = () => {
   clearTaskList();
   return dispatchUpdateTaskListThunk;
 };
+
+export const selectAllTask = (state): Task[] => state.value;
+
+export const selectTaskById = (state, taskId): Task =>
+  state.value.find((task) => task.id === taskId);
 
 export const { updateTaskList } = taskSlice.actions;
 
