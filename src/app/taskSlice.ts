@@ -58,8 +58,8 @@ export const clearTaskListThunk = () => {
 
 export const selectAllTask = (state): Task[] => state.value;
 
-export const selectTaskById = (state, taskId): Task =>
-  state.value.find((task) => task.id === taskId);
+export const selectTaskById = (state, taskId: string): Task =>
+  state.value.find((task: Task) => task.id === taskId);
 
 export const { updateTaskList } = taskSlice.actions;
 
