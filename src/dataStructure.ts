@@ -18,7 +18,7 @@ export function addTask(newTask: Task) {
 
 /** Edit a task by its id and the given values */
 export function editTask(taskEdited: Task) {
-  localStorage[taskEdited.id] = JSON.stringify(taskEdited);
+  localStorage.setItem(taskEdited.id, JSON.stringify(taskEdited));
 }
 
 /** Get a task from local storage */

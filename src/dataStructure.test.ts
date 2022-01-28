@@ -29,10 +29,12 @@ describe("Working with functions to handle local storage", () => {
     const taskId = generateId();
     const task = { id: taskId, todo: "Something todo", completed: false };
     addTask(task);
+
     task.completed = true;
     editTask(task);
+    task.completed = false;
 
-    expect(localStorage[taskId]).not.toEqual(task);
+    expect(localStorage[taskId]).not.toEqual(JSON.stringify(task));
   });
 
   test("Should returns a task from local storage", () => {

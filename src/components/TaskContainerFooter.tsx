@@ -18,6 +18,8 @@ const TaskContainerFooter = () => {
         <p>Completed</p>
       </div>
 
+      {/* TODO: Add a new button here to clear all the list */}
+
       {/* TODO: Add a margin bottom to see this effect */}
       <div className="effectMultiWindows-1"></div>
       <div className="effectMultiWindows-2"></div>

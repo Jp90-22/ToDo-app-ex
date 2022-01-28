@@ -17,23 +17,53 @@ let TaskInput = ({ taskId }) => {
   const task = useAppSelector((state) => selectTaskById(state, taskId));
 
   const [taskTodo, setTaskTodo] = useState(task.todo);
-  const [completed, setCompleted] = useState(task.completed);
+
+  const updateHandler = (e) => {
+    dispatch(
+      updateTaskThunk({
+        id: task.id,
+        todo: e.target.value,
+        completed: task.completed,
+      })
+    );
+  };
 
   // Event handlers
-  const onTaskTodoChange = (e) => {
-    setTaskTodo(e.target.value);
-    dispatch(updateTaskThunk({ id: task.id, todo: taskTodo, completed }));
+  const onTaskTodoChange = (e) => setTaskTodo(e.target.value);
+
+  const onTaskTodoEnterPressed = (e) => {
+    const keycode = e.keyCode ? e.keyCode : e.which;
+    if (keycode === 13) {
+      if (e.target.value) {
+        updateHandler(e);
+      } else {
+        dispatch(removeTaskThunk(task.id));
+      }
+
+      e.target.blur();
+    }
+  };
+
+  const onTaskTodoBlur = (e) => {
+    if (e.target.value) {
+      updateHandler(e);
+    } else {
+      dispatch(removeTaskThunk(task.id));
+    }
   };
 
   const onCompleIconClick = (e) => {
-    setCompleted(!completed);
-    dispatch(updateTaskThunk({ id: task.id, todo: taskTodo, completed }));
+    dispatch(
+      updateTaskThunk({
+        id: task.id,
+        todo: taskTodo,
+        completed: !task.completed,
+      })
+    );
   };
 
   const onTrashIconClick = () => {
-    // if (window.confirm("Are you sure you want to delete this task?")) {
     dispatch(removeTaskThunk(task.id));
-    // }
   };
 
   return (
@@ -41,14 +71,18 @@ let TaskInput = ({ taskId }) => {
       <FontAwesomeIcon
         className="taskDoneIcon"
         onClick={onCompleIconClick}
-        icon={completed ? faCheckCircle : faUnCheckCircle}
+        icon={task.completed ? faCheckCircle : faUnCheckCircle}
       />
+      {/* TODO: Add an effect to see a border when it's focused */}
       <input
         className="task"
         type="text"
         value={taskTodo}
         onChange={onTaskTodoChange}
+        onKeyPress={onTaskTodoEnterPressed}
+        onBlur={onTaskTodoBlur}
       />
+      {/* TODO: Wrap this into a "button" tag to improve the UX */}
       <FontAwesomeIcon
         className="deleteTaskIcon"
         onClick={onTrashIconClick}

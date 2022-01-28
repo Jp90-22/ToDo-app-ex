@@ -24,8 +24,6 @@ const AddTaskInput = () => {
         );
         setNewTaskTodo("");
 
-        e.preventDefault();
-
         return false;
       }
     }
@@ -39,7 +37,7 @@ const AddTaskInput = () => {
 
   return (
     <div className="addTaskInput_content">
-      {/* TODO: Add a hover effect to this icon and wrap it in a "button" tag */}
+      {/* TODO: Add a hover effect to this icon and wrap it in a "button" tag and change its css class name */}
       <FontAwesomeIcon
         className="iconAddTask"
         icon={faChevronDown}
