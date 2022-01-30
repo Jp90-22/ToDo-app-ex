@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Utilities
 import {
   updateTaskThunk,
@@ -16,7 +16,7 @@ let TaskInput = ({ taskId }) => {
   const dispatch = useAppDispatch();
   const task = useAppSelector((state) => selectTaskById(state, taskId));
 
-  const [taskTodo, setTaskTodo] = useState(task.todo);
+  const [taskTodo, setTaskTodo] = useState("");
 
   const updateHandler = (e) => {
     dispatch(
@@ -27,6 +27,10 @@ let TaskInput = ({ taskId }) => {
       })
     );
   };
+
+  useEffect(() => {
+    setTaskTodo(task.todo);
+  }, [task.todo]);
 
   // Event handlers
   const onTaskTodoChange = (e) => setTaskTodo(e.target.value);

@@ -12,13 +12,13 @@ const AddTaskInput = () => {
   const [newTaskTodo, setNewTaskTodo] = useState("");
 
   const onAddTaskKeyPress = (e) => {
-    if (newTaskTodo) {
+    if (e.target.value) {
       const keycode = e.keyCode ? e.keyCode : e.which;
       if (keycode === 13) {
         dispatch(
           addTaskThunk({
             id: generateId(),
-            todo: newTaskTodo,
+            todo: e.target.value,
             completed: false,
           })
         );
