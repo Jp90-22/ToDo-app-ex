@@ -4,7 +4,7 @@ import {
   updateTaskThunk,
   removeTaskThunk,
   selectTaskById,
-  selectAllTask,
+  selectTasks,
 } from "../app/taskSlice";
 import { useAppDispatch, useAppSelector } from "../app/typedReduxHooks";
 // Icons
@@ -22,7 +22,7 @@ let TaskInput = ({ taskId }) => {
     dispatch(
       updateTaskThunk({
         id: task.id,
-        todo: e.target.value,
+        todo: e.target.value.trim(),
         completed: task.completed,
       })
     );
@@ -60,7 +60,7 @@ let TaskInput = ({ taskId }) => {
     dispatch(
       updateTaskThunk({
         id: task.id,
-        todo: taskTodo,
+        todo: taskTodo.trim(),
         completed: !task.completed,
       })
     );
@@ -99,7 +99,7 @@ let TaskInput = ({ taskId }) => {
 TaskInput = React.memo(TaskInput);
 
 const TaskList = () => {
-  const tasks = useAppSelector((state) => selectAllTask(state));
+  const tasks = useAppSelector((state) => selectTasks(state));
 
   return (
     <>

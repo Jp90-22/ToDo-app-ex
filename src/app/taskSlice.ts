@@ -1,6 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 import Task, {
-  getAllTask,
+  getAllTasks,
   addTask,
   editTask,
   completeAllTask,
@@ -13,7 +13,7 @@ export interface TaskState {
 }
 
 const initialState: TaskState = {
-  value: getAllTask(),
+  value: getAllTasks(),
 };
 
 export const taskSlice = createSlice({
@@ -21,7 +21,7 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     updateTaskList(state) {
-      state.value = getAllTask();
+      state.value = getAllTasks().sort(sortStateFunction);
     },
   },
 });
@@ -56,7 +56,17 @@ export const clearTaskListThunk = () => {
   return dispatchUpdateTaskListThunk;
 };
 
-export const selectAllTask = (state): Task[] => state.value;
+/** Function to sort the state array */
+function sortStateFunction(a: Task, b: Task): number {
+  const p1: number = Number.parseInt(a.id.split("-")[0]);
+  const p2: number = Number.parseInt(b.id.split("-")[0]);
+  return p2 - p1;
+}
+
+export const selectTasks = createSelector(
+  [(state): Task[] => state.value],
+  (tasks) => tasks
+);
 
 export const selectTaskById = (state, taskId: string): Task =>
   state.value.find((task: Task) => task.id === taskId);

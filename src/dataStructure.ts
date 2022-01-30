@@ -9,7 +9,7 @@ export default interface Task {
  * @returns a random sequence of string simulating unique id
  */
 export const generateId = (): string =>
-  Math.random().toString(36).substring(2, 18);
+  localStorage.length + "-" + Math.random().toString(36).substring(2, 18);
 
 /** Add a new task to local storage */
 export function addTask(newTask: Task) {
@@ -42,7 +42,7 @@ export function completeAllTask() {
  * Get all tasks in local storage
  * @returns array containing all task in local storage
  */
-export function getAllTask(): Task[] {
+export function getAllTasks(): Task[] {
   return Object.values(localStorage).map((value) => JSON.parse(value) as Task);
 }
 

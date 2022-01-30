@@ -18,7 +18,7 @@ const AddTaskInput = () => {
         dispatch(
           addTaskThunk({
             id: generateId(),
-            todo: e.target.value,
+            todo: e.target.value.trim(),
             completed: false,
           })
         );
