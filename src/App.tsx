@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteModalAlert from "./components/DeleteModalAlert";
 import TaskContainer from "./components/TaskContainer";
 import "./App.scss";
 

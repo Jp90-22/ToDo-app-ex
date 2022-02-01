@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-$backgroundTask: #fff4f4;
+$backgroundTask: #ffffff;
 $paddingInputs: 25px 15px;
 
 $principalFont: "Noto Sans", sans-serif;
@@ -42,6 +42,21 @@ body {
 
     .iconAddTask {
       margin: 20px 15px;
+    }
+    .iconAddTask:hover{
+      // transform: scale(1.7, 1.7);
+      animation-name: AnimationIconAddTask;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      color: green;
+      transition: color .3s ease;
+    }
+
+    @keyframes AnimationIconAddTask {
+      0%   {transform: rotate(10deg);}
+      25%  {transform: rotate(-20deg);}
+      50%  {transform: rotate(10deg);}
+      100% {transform: rotate(-20deg);}
     }
 
     .addTaskInput {
@@ -103,7 +118,7 @@ body {
 
   .itemsLeft {
     margin: 0 20px;
-    color: rgb(87, 87, 87);
+    color: #575757;
     font-family: $secundaryFont;
     font-weight: normal;
     font-size: 14px;
@@ -114,16 +129,38 @@ body {
     flex-direction: row;
     margin: 0 auto;
 
-    p {
+    .Option {
       margin: auto 10px;
       border: 1px solid #dbdbdb;
       padding: 3px 8px;
       font-family: $principalFont;
       font-size: 15px;
+      text-decoration: none;
+      color: #575757;
     }
     p:hover {
       border: 1px solid #bbbbbb;
       transition: all 0.2s ease-in;
     }
   }
+
+  .deleteAllBtn {
+    border: 2px solid #d11a2a;
+    outline: none;
+    background: none;
+    color: #d11a2a;
+    margin: 0 4% 0 0;
+    border-radius: 400px;
+    padding: 6px 7px;
+    font-size: 13px;
+    font-family: $principalFont;
+    font-weight: 700;
+  }
+
+  .deleteAllBtn:hover{
+    background: #d11a2a;
+    color: #fff;
+    transition: all .5s ease;
+  }
+
 }

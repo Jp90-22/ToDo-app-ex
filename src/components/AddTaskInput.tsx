@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { generateId } from "../dataStructure";
 import { addTaskThunk, setAllTaskCompletedThunk } from "../app/taskSlice";
 import { useAppDispatch } from "../app/typedReduxHooks";
+import "./TaskContainer.scss"
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";

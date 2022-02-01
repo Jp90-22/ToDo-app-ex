@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Outlet, Link, Routes, Route } from "react-router-dom";
 import { useAppSelector } from "../app/typedReduxHooks";
 
 const TaskContainerFooter = () => {
@@ -8,23 +9,25 @@ const TaskContainerFooter = () => {
   );
 
   return (
-    <div className="fitlerTask_Container">
-      <p className="itemsLeft">{tasksLeft} items left</p>
+    <BrowserRouter>
+      <div className="fitlerTask_Container">
+        <p className="itemsLeft">{tasksLeft} items left</p>
 
-      {/* TODO: Change "p" tag to "Link" tag from react-router */}
-      <div className="fitlerOptions">
-        <p>All</p>
-        <p>Active</p>
-        <p>Completed</p>
+        <div className="fitlerOptions">
+            <Link className="Option" to="/all">All</Link>
+            <Link className="Option" to="/active">Active</Link>
+            <Link className="Option" to="/completed">Completed</Link>
+        </div>
+
+        {/* When you click this botton, it should display the Alert modal to confirm the deletion of all tasks  */}
+        <button className="deleteAllBtn">Delete All</button>
+
+        {/* TODO: Add a margin bottom to see this effect */}
+        <div className="effectMultiWindows-1"></div>
+        <div className="effectMultiWindows-2"></div>
+        <div className="effectMultiWindows-3"></div>
       </div>
-
-      {/* TODO: Add a new button here to clear all the list */}
-
-      {/* TODO: Add a margin bottom to see this effect */}
-      <div className="effectMultiWindows-1"></div>
-      <div className="effectMultiWindows-2"></div>
-      <div className="effectMultiWindows-3"></div>
-    </div>
+    </BrowserRouter>
   );
 };
 
