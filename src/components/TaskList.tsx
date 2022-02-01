@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Utilities
 import {
   updateTaskThunk,
   removeTaskThunk,
   selectTaskById,
-  selectAllTask,
+  selectTasks,
 } from "../app/taskSlice";
 import { useAppDispatch, useAppSelector } from "../app/typedReduxHooks";
 // Icons
@@ -16,17 +16,21 @@ let TaskInput = ({ taskId }) => {
   const dispatch = useAppDispatch();
   const task = useAppSelector((state) => selectTaskById(state, taskId));
 
-  const [taskTodo, setTaskTodo] = useState(task.todo);
+  const [taskTodo, setTaskTodo] = useState("");
 
   const updateHandler = (e) => {
     dispatch(
       updateTaskThunk({
         id: task.id,
-        todo: e.target.value,
+        todo: e.target.value.trim(),
         completed: task.completed,
       })
     );
   };
+
+  useEffect(() => {
+    setTaskTodo(task.todo);
+  }, [task.todo]);
 
   // Event handlers
   const onTaskTodoChange = (e) => setTaskTodo(e.target.value);
@@ -56,7 +60,7 @@ let TaskInput = ({ taskId }) => {
     dispatch(
       updateTaskThunk({
         id: task.id,
-        todo: taskTodo,
+        todo: taskTodo.trim(),
         completed: !task.completed,
       })
     );
@@ -95,7 +99,7 @@ let TaskInput = ({ taskId }) => {
 TaskInput = React.memo(TaskInput);
 
 const TaskList = () => {
-  const tasks = useAppSelector((state) => selectAllTask(state));
+  const tasks = useAppSelector((state) => selectTasks(state));
 
   return (
     <>

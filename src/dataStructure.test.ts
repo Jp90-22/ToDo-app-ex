@@ -4,7 +4,7 @@ import {
   clearTaskList,
   completeAllTask,
   editTask,
-  getAllTask,
+  getAllTasks,
   getTask,
   removeTask,
 } from "./dataStructure";
@@ -73,7 +73,7 @@ describe("Working with functions to handle local storage", () => {
     addTask({ id: generateId(), todo: "Something todo", completed: false });
     addTask({ id: generateId(), todo: "Something todo", completed: false });
     addTask({ id: generateId(), todo: "Something todo", completed: false });
-    const allTask = getAllTask();
+    const allTask = getAllTasks();
 
     console.log(allTask);
     expect(allTask).not.toBe([]);
